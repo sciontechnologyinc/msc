@@ -17,8 +17,7 @@ class CreateLogtrailsTable extends Migration
             $table->increments('id');
             $table->string('fetcher');
             $table->string('status');
-            $table->string('section');
-            $table->string('student');
+            $table->string('rfids');
             $table->string('time');
             $table->string('date');
             $table->timestamps();

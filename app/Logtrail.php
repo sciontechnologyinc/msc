@@ -10,8 +10,7 @@ class Logtrail extends Model
     protected $fillable = [
         'fetcher',
         'status',
-        'section',
-        'student',
+        'rfids',
         'time',
         'date',
     ];

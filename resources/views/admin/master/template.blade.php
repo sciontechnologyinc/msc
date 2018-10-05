@@ -19,13 +19,19 @@
     <link href="../../css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../../css/themes/all-themes.css" rel="stylesheet" />
     <style>
         input[type='checkbox']
             {
                left: 25px!important;
                opacity: 10 !important;
+            }
+            .dropup, .dropdown {
+                position: relative;
+                margin-top: 2%;
+            }
+            td.dataTables_empty {
+                display: none !important;
             }
     </style>
 </head>

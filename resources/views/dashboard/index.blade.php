@@ -81,8 +81,7 @@
                                                         <th>#</th>
                                                         <th>Fetcher</th>
                                                         <th>Status</th>
-                                                        <th>Student</th>
-                                                        <th>Section</th>
+                                                        <th>Rfid No</th>
                                                         <th>Time</th>
                                                         <th>Date</th>
                                                     </tr>
@@ -92,8 +91,7 @@
                                                         <th>#</th>
                                                         <th>Fetcher</th>
                                                         <th>Status</th>
-                                                        <th>Student</th>
-                                                        <th>Section</th>
+                                                        <th>Rfid No</th>
                                                         <th>Time</th>
                                                         <th>Date</th>
                                                     </tr>
@@ -104,8 +102,7 @@
                                                             <td>{{ $index + 1}}</td>
                                                             <td>{{ $logtrail->fetcher }}</td>
                                                             <td>{{ $logtrail->status }}</td>
-                                                            <td>{{ $logtrail->student }}</td>
-                                                            <td>{{ $logtrail->section }}</td>
+                                                            <td>{{ $logtrail->rfids }}</td>
                                                             <td>{{ $logtrail->time }}</td>
                                                             <td>{{ $logtrail->date }}</td>
                                                         </tr>

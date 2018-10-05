@@ -20,7 +20,7 @@
             Route::get          ('/delete/{id}',                'RfidController@delete'                   )->name('rfid_delete');
             Route::get          ('/get/{id}',                   'RfidController@logtrail'                 )->name('rfid_getlogtrail');
             Route::post         ('/save/logtrail',              'RfidController@insertlogtrail'           )->name('rfid_getlogtrail');
-            Route::get          ('/students',                   'RfidController@students'                 )->name('rfid_student');
+            Route::post         ('/students/{id}',              'RfidController@students'                 )->name('rfid_student');
             Route::post         ('/update/status/{id}',         'RfidController@status'                   )->name('rfid_status');
         });
 

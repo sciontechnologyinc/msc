@@ -11,6 +11,14 @@
     <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <link href="css/chs.css" rel="stylesheet">
+    <style>
+        td.dataTables_empty {
+                display: none!important;
+            }
+            #navbarDropdown {
+                font-size: 17px !important;
+            }
+    </style>
 </head>
 
 <body class="theme-red">
@@ -43,10 +51,12 @@
 
                 <div class="chs-logo-header"><img src="/images/chslogo.png" alt=""></div> 
                 <a href="" class="fetcher-header">Monitoring System</a>
-                <input type="text" class="form-group" id="rfids">
+                
             </div>
             </header>
            <div class="row col-lg-10 col-lg-offset-1" style="border:1px solid gray; margin-top:1%; padding:1%">
+                Fetcher's ID : <input type="text" class="form-group" id="rfids" autofocus>
+                <input type="text" class="section" value="{{ Auth::user()->section }}" hidden>
                 <table id="table_id" class="display">
                     <thead>
                         <tr>
@@ -76,10 +86,11 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
- function studenttable(){
+ function studenttable(sec){
+   
      $.ajax({
-         url:'rfids/students',
-         method:'GET',
+         url:'rfids/students/'+sec,
+         method:'post',
          data:{},
          success: function(data){
              console.log(data);
@@ -111,8 +122,14 @@
      })
  }
          $(document).ready( function () {
-           
-             studenttable();
+
+            var a = $('.section').val().split(',');
+            for(j=0; j < a.length ; j++){
+                var sec = $('.section').val().split(',')[j];
+               var sec = $.trim(sec);
+                studenttable(sec);
+            }
+            
             $('#table_id').DataTable();
             $('#rfids').change(function(){
                 $.post('/rfids/get/'+$('#rfids').val(), function(response)
@@ -143,7 +160,11 @@
                                 success: function( data ) {
                                     updateStatus(name,fetcherstatus);
                                     $('tbody').empty();
-                                    studenttable();
+                                    for(j=0; j < a.length ; j++){
+                                        var sec = $('.section').val().split(',')[j];
+                                        var sec = $.trim(sec);
+                                        studenttable(sec);
+                                    }
                                     $.get('rfids/get/'+name, function(response)
                                         {
                                             var fullDate = new Date();
@@ -151,24 +172,22 @@
                                             var currentDate = fullDate.getDate() + "/" + twoDigitMonth + "/" + fullDate.getFullYear();
 
                                             console.log(response.students.length);
-                                            for(x=0; x < response.students.length; x++){
-                                                var y = response.students[x];
+                                                var y = response.students[0];
                                                     $.ajax({
                                                 url:"rfids/save/logtrail",
                                                 method:"POST",
                                                 data:{
-                                                    fetcher:y.firstname,
+                                                        fetcher:y.firstname,
                                                         status:y.status,
-                                                        section:y.section,
-                                                        student:y.firstname,
+                                                        rfids:$('#rfids').val(),
                                                         time:y.time,
                                                         date:currentDate
                                                     },
-                                                    success: function(data){
+                                                    success: function(data)
+                                                    {
                                                         $('#rfids').val('');
                                                     }
                                                 });
-                                                }
                                         },'json');
                                 }
                             });
