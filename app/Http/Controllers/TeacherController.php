@@ -8,6 +8,7 @@ use App\Section;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use DB;
 
 class TeacherController extends Controller
 {
@@ -102,8 +103,10 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
+        $departments = DB::table('departments')->get();
+        $sections = DB::table('sections')->get();
         $teacher = User::find($id);
-        return view('teachers/edit', ['teacher' => $teacher]);
+        return view('teachers/edit', ['teacher' => $teacher, 'departments' => $departments ,'sections' => $sections]);
     }
 
     /**
