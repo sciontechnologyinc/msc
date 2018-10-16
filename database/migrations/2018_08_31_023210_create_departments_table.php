@@ -18,6 +18,8 @@ class CreateDepartmentsTable extends Migration
             $table->string('departmentcode');
             $table->string('department');
             $table->timestamps();
+            $table->time('deleted_at')->nullable();
+
         });
     }
 

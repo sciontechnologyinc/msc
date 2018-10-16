@@ -97,7 +97,7 @@ class SectionController extends Controller
     public function destroy($id)
     {
         $section = Section::find($id);
-	    $section->destroy($id);
+	    $section->delete($id);
 
 	    return redirect()->back()->with('success','Deleted successfuly');
     }

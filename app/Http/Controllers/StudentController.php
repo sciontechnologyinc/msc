@@ -109,7 +109,7 @@ class StudentController extends Controller
     public function destroy($id)
     {
         $student = Student::find($id);
-	    $student->destroy($id);
+	    $student->delete($id);
 
 	    return redirect()->back()->with('success','Deleted successfuly');
     }

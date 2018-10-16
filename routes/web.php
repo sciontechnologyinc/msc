@@ -62,6 +62,7 @@
             Route::get          ('/update/{id}',                 'DepartmentController@edit'              )->name('department_edit');
             Route::post         ('/update/{id}/save',            'DepartmentController@update'            )->name('department_update');
             Route::post         ('/delete/{id}',                 'DepartmentController@destroy'           )->name('department_destroy');
+
         });
 
         //Grade
@@ -94,6 +95,17 @@
             Route::post         ('/update/{id}/save',            'SectionController@update'               )->name('dashboard_update');
             Route::post         ('/delete/{id}',                 'SectionController@destroy'              )->name('dashboard_destroy');
         });
+
+
+//Trash
+Route::resource('teacherTrash','TeacherTrashController');
+Route::resource('fetcherTrash','FetcherTrashController');
+Route::resource('studentTrash','StudentTrashController');
+Route::resource('departmentTrash','DepartmentTrashController');
+Route::resource('gradeTrash','GradeTrashController');
+Route::resource('sectionTrash','SectionTrashController');
+
+
 
 //default
 Auth::routes();

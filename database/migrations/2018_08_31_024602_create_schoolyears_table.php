@@ -16,6 +16,8 @@ class CreateSchoolyearsTable extends Migration
         Schema::create('schoolyears', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->time('deleted_at')->nullable();
+
         });
     }
 

@@ -21,6 +21,8 @@ class CreateLogtrailsTable extends Migration
             $table->string('time');
             $table->string('date');
             $table->timestamps();
+            $table->time('deleted_at')->nullable();
+
         });
     }
 

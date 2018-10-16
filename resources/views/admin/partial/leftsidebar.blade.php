@@ -46,6 +46,9 @@
                             <li>
                                 <a href="{{ url('teacher') }}">List of Teachers</a>
                             </li>
+                            <li>
+                                <a href="{{ url('teacherTrash') }}">Trash</a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -60,6 +63,9 @@
                             <li>
                                 <a href="{{ url('fetcher') }}">List of Fetchers</a>
                             </li>
+                            <li>
+                                <a href="{{ url('fetcherTrash') }}">Trash</a>
+                            </li>
                         </ul>
                     </li>
                         <li>
@@ -73,6 +79,9 @@
                                 </li>
                                 <li>
                                     <a href="{{ url('student') }}">List of Students</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('studentTrash') }}">Trash</a>
                                 </li>
                             </ul>
                         </li>
@@ -89,6 +98,9 @@
                                 <li>
                                     <a href="{{ url('department') }}">List of Department</a>
                                 </li>
+                                <li>
+                                    <a href="{{ url('departmentTrash') }}">Trash</a>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -103,6 +115,9 @@
                                 <li>
                                     <a href="{{ url('grade') }}">List of Grade</a>
                                 </li>
+                                <li>
+                                    <a href="{{ url('gradeTrash') }}">Trash</a>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -116,6 +131,9 @@
                                 </li>
                                 <li>
                                     <a href="{{ url('section') }}">List of Section</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('sectionTrash') }}">Trash</a>
                                 </li>
                             </ul>
                         </li>

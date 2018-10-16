@@ -96,7 +96,7 @@ class GradeController extends Controller
     public function destroy($id)
     {
         $grade = Grade::find($id);
-	    $grade->destroy($id);
+	    $grade->delete($id);
 
 	    return redirect()->back()->with('success','Deleted successfuly');
     }

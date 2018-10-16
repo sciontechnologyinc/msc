@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Department;
-class DepartmentController extends Controller
+use App\Http\Controllers\Controller;
+
+use App\Teacher;
+use App\User;
+use DB;
+
+class TeacherTrashController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +18,11 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = Department::orderBy('id')->get();
-        return view('departments.index', ['departments' => $departments]);
+        $teachers = DB::table('users')
+        ->whereNotNull('deleted_at')
+        ->get();
+        
+        return view('teachers/trash', ['teachers' => $teachers]);
     }
 
     /**
@@ -24,7 +32,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('departments.create');
+        //
     }
 
     /**
@@ -35,14 +43,7 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        $department = $request->all();
-        $data = $request->validate([
-           'departmentcode' => 'required',
-           'department' => 'required',
-       ]);
-       Department::create($data);
-       return redirect()->back()->with('success','Added successfuly');
-       
+        //
     }
 
     /**
@@ -64,8 +65,7 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        $department = Department::find($id);
-        return view('departments/edit', ['department' => $department]);
+        //
     }
 
     /**
@@ -77,11 +77,7 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $department = Department::find($id);
-        $data = $request->all();
-        $department->update($data);
-
-        return redirect('/departments')->with('success','Updated successfuly');
+        //
     }
 
     /**
@@ -92,9 +88,9 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        $department = Department::find($id);
-	    $department->delete($id);
+        $teacher = User::withTrashed()->find($id)->restore();
+        
+	    return redirect()->back()->with('success','Restored successfuly');
 
-	    return redirect()->back()->with('success','Deleted successfuly');
     }
 }

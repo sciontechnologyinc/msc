@@ -29,6 +29,8 @@ class CreateStudentsTable extends Migration
             $table->string('time')->default('00:00');
             $table->string('color')->default('');
             $table->timestamps();
+            $table->time('deleted_at')->nullable();
+
         });
     }
 

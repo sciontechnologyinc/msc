@@ -100,7 +100,7 @@ class FetcherController extends Controller
     public function destroy($id)
     {
         $fetcher = Fetcher::find($id);
-	    $fetcher->destroy($id);
+	    $fetcher->delete($id);
 
 	    return redirect()->back()->with('success','Deleted successfuly');
     }

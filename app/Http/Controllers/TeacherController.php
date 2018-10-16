@@ -131,7 +131,7 @@ class TeacherController extends Controller
     public function destroy($id)
     {
         $teacher = User::find($id);
-	    $teacher->destroy($id);
+	    $teacher->delete($id);
 
 	    return redirect()->back()->with('success','Deleted successfuly');
     }
