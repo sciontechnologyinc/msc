@@ -27,7 +27,6 @@
             <div class="header">
 
                     <div class="collapse navbar-collapse" id="navbar-collapse">
-
                             <div class="logout">
                                     <div class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -45,10 +44,7 @@
                                             </form>
                                     </div>
                               </div>
-                              
                         </div>
-
-
                 <div class="chs-logo-header"><img src="/images/chslogo.png" alt=""></div> 
                 <a href="" class="fetcher-header">Monitoring System</a>
                 
