@@ -15,6 +15,7 @@ $(document).ready(function() {
         ]
     });
 
+
     $('.studentdate').change(function() {
         var chkdate = $('.studentdate').val();
         checkDate(chkdate);
@@ -23,4 +24,5 @@ $(document).ready(function() {
     $("#deleteForm").on("submit", function() {
         return confirm("Do you want to delete this item?");
     });
+
 });
