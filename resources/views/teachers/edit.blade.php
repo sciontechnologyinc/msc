@@ -35,7 +35,7 @@
                                 {!! Form::open(['id' => 'dataForm', 'method' => 'post', 'url' => 'teacher/update/'.$teacher->id.'/save'  ]) !!}
                            <div class="form-group">
                                 {!!Form::label('firstname', 'First Name', array('class' => 'form-control-label'))!!}
-                                {!!Form::text('firstname',$teacher->firstname, ['placeholder' => 'First Name', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
+                                {!!Form::text('firstname',$teacher->name, ['placeholder' => 'First Name', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
                            </div>
 
                            <div class="form-group">

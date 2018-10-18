@@ -18,7 +18,15 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::orderBy('id')->get();
-        return view('students.index', ['students' => $students]);
+        $fetchers = Fetcher::orderBy('id')->get();
+        $grades = Grade::orderBy('id')->get();
+        $sections = Section::orderBy('id')->get();
+
+        $trashstudents = DB::table('students')
+        ->whereNotNull('deleted_at')
+        ->get();
+
+        return view('students.index', ['fetchers' => $fetchers,'grades'=>$grades,'sections'=>$sections,'students' => $students,'trashstudents'=>$trashstudents]);
     }
 
     public function create()

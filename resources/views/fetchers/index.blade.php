@@ -31,7 +31,8 @@
                         <div class="header">
                             <h2>Fetcher's Info</h2>
                             <ul class="header-dropdown m-r--5">
-                                    <a class="btn btn-primary" href="{{url('fetcher/add')}}">Add Fetcher</a>
+                                <a class="btn btn-primary"  data-toggle="modal" data-target="#addfetchermodal">Add Fetcher</a>
+                                <a class="btn btn-warning" data-toggle="modal" data-target="#fetcherArchived">Archived</a>
                             </ul>
                         </div>
                         <div class="body">
@@ -85,6 +86,8 @@
                                     </tbody>
                                     @endforeach
                                 </table>
+                                @include('fetchers.create');
+                                @include('fetchers.trash');
                             </div>
                         </div>
                     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Fetcher;
 use App\Grade;
+use DB;
 class FetcherController extends Controller
 {
     /**
@@ -15,10 +16,13 @@ class FetcherController extends Controller
     public function index()
     {
         $fetchers = Fetcher::orderBy('id')->get();
-        return view('fetchers.index', ['fetchers' => $fetchers]);
-    }
 
+        $trashfetchers = DB::table('fetchers')
+        ->whereNotNull('deleted_at')
+        ->get();
    
+        return view('fetchers.index', ['fetchers' => $fetchers,'trashfetchers'=>$trashfetchers]);
+    }
 
     /**
      * Show the form for creating a new resource.

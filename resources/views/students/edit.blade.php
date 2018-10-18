@@ -75,10 +75,7 @@
                                     {!!Form::text('schoolyear',$student->schoolyear, ['placeholder' => 'School Year', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
                             </div>
 
-                           <div class="form-group">
-                                {!!Form::label('contact', 'Contact', array('class' => 'form-control-label'))!!}
-                                {!!Form::text('contact',$student->contact, ['placeholder' => 'Contact', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
-                           </div>
+                          
 
                             <div class="form-group">
                                 {!!Form::label('fetcher', 'Fetcher', array('class' => 'form-control-label'))!!}
@@ -94,6 +91,10 @@
                                 {!!Form::label('guardian', 'Guardian', array('class' => 'form-control-label'))!!}
                                 {!!Form::text('guardian',$student->guardian, ['placeholder' => 'Guardian', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
                            </div>
+                           <div class="form-group">
+                            {!!Form::label('contact', 'Contact', array('class' => 'form-control-label'))!!}
+                            {!!Form::text('contact',$student->contact, ['placeholder' => 'Contact', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
+                            </div>
                                 {!!Form::submit('Update Student', ['id' => 'addForm','class' => 'btn btn-primary  col-lg-2 offset-7']) !!}
                         </div>
                     {!! Form::close() !!}
