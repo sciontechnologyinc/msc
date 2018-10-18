@@ -21,7 +21,7 @@
                  <label>Birthday</label>
                  <div class="iconic-input">
                      <i class="fa fa-calendar"></i>
-                     <input type="date" class="form-control" name="birthday" placeholder="Birthday" value="2018-08-15" required="">
+                     <input type="date" class="form-control" name="birthday" id="dateofbirth" placeholder="Birthday" value="2018-08-15" required="">
                  </div>
              </div>
 
@@ -88,3 +88,18 @@ function validatePhone(txtPhone) {
     }
 }
     </script>
+
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+$('#dateofbirth').datepicker({
+  minDate: '-100Y',
+  maxDate: '-18Y',
+  dateFormat: 'dd/mm/yy',
+  changeMonth: true,
+  changeYear: true,
+  yearRange: '-100:+0'
+});
+
+</script>
