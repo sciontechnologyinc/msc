@@ -91,8 +91,8 @@
                                     </tbody>
                                     @endforeach
                                 </table>
-                                @include('teachers.create');
-                                @include('teachers.trash');
+                                @include('teachers.create')
+                                @include('teachers.trash')
                                   </div>
                             </div>
                         </div>
