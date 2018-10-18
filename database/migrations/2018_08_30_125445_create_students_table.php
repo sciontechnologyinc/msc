@@ -24,15 +24,17 @@ class CreateStudentsTable extends Migration
             $table->string('schoolyear');
             $table->string('contact');
             $table->string('fetcher');
-            $table->string('guardian');
+            $table->string('guardian')->nullable();
+            $table->string('guardian1')->nullable();
+            $table->string('guardian2')->nullable();
             $table->string('status')->default('OUT');
             $table->string('time')->default('00:00');
             $table->string('color')->default('');
             $table->timestamps();
             $table->time('deleted_at')->nullable();
-
         });
     }
+
 
     /**
      * Reverse the migrations.

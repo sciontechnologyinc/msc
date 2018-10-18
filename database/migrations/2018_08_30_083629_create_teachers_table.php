@@ -25,8 +25,9 @@ class CreateTeachersTable extends Migration
             $table->string('contact');
             $table->timestamps();
             $table->time('deleted_at')->nullable();
-
         });
+
+       
     }
 
     /**

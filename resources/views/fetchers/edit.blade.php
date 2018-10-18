@@ -54,6 +54,11 @@
                                             {!!Form::label('rfidno', 'RFID No', array('class' => 'form-control-label'))!!}
                                             {!!Form::number('rfidno',$fetcher->rfidno, ['placeholder' => 'RFID No', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
                                     </div>
+
+                                    <div class="form-group">
+                                        {!!Form::label('rfidno', 'RFID No', array('class' => 'form-control-label'))!!}
+                                        {!!Form::number('rfidno',$fetcher->type, ['placeholder' => 'RFID No', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
+                                    </div>
         
                                    <div class="form-group">
                                         {!!Form::label('address', 'Address', array('class' => 'form-control-label'))!!}

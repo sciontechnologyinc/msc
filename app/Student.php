@@ -19,6 +19,8 @@ class Student extends Model
         'schoolyear',
         'contact',
         'fetcher',
-        'guardian'
+        'guardian',
+        'guardian1',
+        'guardian2'
 	];
 }

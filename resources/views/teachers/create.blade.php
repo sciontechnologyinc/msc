@@ -47,29 +47,27 @@
 
              <div class="form-group">
                      <label style="width:100%;">Section </label>
-       @foreach($sections as $section)
+                         @foreach($sections as $section)
                          <label class="checkbox-inline pull-left" style="width:30%; margin-left:0px;background:#d9edf7;margin:0.5%;border-radius:20px;">
-                         
                          <input class="section" type="checkbox" name="section[]" value="{{$section->section}}" {{ old('section', $section->section) == 'value' ? 'checked="checked"' : '' }}> {{$section->section}}</label>
-         @endforeach
+                          @endforeach
                      </div>
-                 <br>
 
-            <div class="form-group">
+            <div class="form-group col-lg-12" >
                  {!!Form::label('address', 'Address', array('class' => 'form-control-label'))!!}
                  {!!Form::text('address',null, ['placeholder' => 'Address', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-lg-12">
                  {!!Form::label('contact', 'Contact', array('class' => 'form-control-label'))!!}
                  {!!Form::number('contact',null, ['placeholder' => 'Contact', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
             </div>
 
-            <div class="form-group"><label class="form-control-label">Password</label>
+            <div class="form-group col-lg-12"><label class="form-control-label">Password</label>
              <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>
             </div>
 
-            <div class="form-group"><label class="form-control-label">Confirm Password</label>
+            <div class="form-group col-lg-12"><label class="form-control-label">Confirm Password</label>
              <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required>
             </div>
             <div class="modal-footer">

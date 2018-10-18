@@ -14,6 +14,7 @@ class Fetcher extends Model
         'gender',
         'birthday',
         'rfidno',
+        'type',
         'status',
         'address',
         'contact'

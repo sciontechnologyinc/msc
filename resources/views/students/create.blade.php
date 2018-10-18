@@ -31,7 +31,7 @@
                  <label>Birthday</label>
                  <div class="iconic-input">
                      <i class="fa fa-calendar"></i>
-                     <input type="date" class="form-control" name="birthday" placeholder="Birthday" value="2018-08-15" required="">
+                     <input type="date" class="form-control studentdate" name="birthday" placeholder="Birthday" value="2018-08-15" required="">
                  </div>
              </div>
 
@@ -68,19 +68,42 @@
                                   <option value="{{$fetcher->name}}" {{ old('fetcher') ? 'selected' : '' }}>{{$fetcher->name}}</option>
                               @endforeach
                      </select>
-              </div>
+            </div>
             <div class="form-group">
-                 {!!Form::label('guardian', 'Guardian', array('class' => 'form-control-label'))!!}
-                 {!!Form::text('guardian',null, ['placeholder' => 'Guardian', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
+                {!!Form::label('guardian', 'Guardian 1', array('class' => 'form-control-label'))!!}
+                     <select name="guardian" class="form-control">
+                             <option value="" disabled {{ old('fetcher') ? '' : 'selected' }}>Choose a fetcher</option>
+                             @foreach($fetchers as $fetcher)
+                                 <option value="{{$fetcher->name}}" {{ old('fetcher') ? 'selected' : '' }}>{{$fetcher->name}}</option>
+                             @endforeach
+                    </select>
+           </div>
+           <div class="form-group">
+            {!!Form::label('guardian1', 'Guardian 2', array('class' => 'form-control-label'))!!}
+                 <select name="guardian1" class="form-control">
+                         <option value="" disabled {{ old('fetcher') ? '' : 'selected' }}>Choose a fetcher</option>
+                         @foreach($fetchers as $fetcher)
+                             <option value="{{$fetcher->name}}" {{ old('fetcher') ? 'selected' : '' }}>{{$fetcher->name}}</option>
+                         @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                {!!Form::label('guardian2', 'Guardian 3', array('class' => 'form-control-label'))!!}
+                     <select name="guardian2" class="form-control">
+                             <option value="" disabled {{ old('fetcher') ? '' : 'selected' }}>Choose a fetcher</option>
+                             @foreach($fetchers as $fetcher)
+                                 <option value="{{$fetcher->name}}" {{ old('fetcher') ? 'selected' : '' }}>{{$fetcher->name}}</option>
+                             @endforeach
+                    </select>
             </div>
             <div class="form-group">
              {!!Form::label('contact', 'Contact', array('class' => 'form-control-label'))!!}
              {!!Form::text('contact',null, ['placeholder' => 'Contact', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
             </div>
-                <div class="modal-footer">
+            <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     {!!Form::submit('Create Student', ['id' => 'addForm','class' => 'btn btn-primary']) !!}
-                </div>
+            </div>
          </div>
              {!! Form::close() !!}
         </div>

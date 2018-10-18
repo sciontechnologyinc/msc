@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
             $table->time('deleted_at')->nullable();
 
         });
+
     }
 
     /**

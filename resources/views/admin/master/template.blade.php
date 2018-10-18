@@ -69,6 +69,7 @@
     <script src="../../js/demo.js"></script>
     <script src="../../js/pages/tables/jquery-datatable.js"></script>
     <script src="../../js/demo.js"></script>
+
     <script src="{{ URL::asset('js/csv.js') }}"></script>
 </body>
 

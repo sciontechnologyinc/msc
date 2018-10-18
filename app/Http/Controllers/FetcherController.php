@@ -47,7 +47,8 @@ class FetcherController extends Controller
            'name' => 'required',
            'gender' => 'required',
            'birthday' => 'required',
-           'rfidno' => 'required',
+           'rfidno' => 'required|unique:fetchers',
+           'type' => 'required',
            'address' => 'required',
            'contact' => 'required',
        ]);

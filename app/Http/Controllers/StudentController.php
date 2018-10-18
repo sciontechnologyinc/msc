@@ -57,6 +57,8 @@ class StudentController extends Controller
            'contact' => 'required',
            'fetcher' => 'required',
            'guardian' => 'required',
+           'guardian1' => 'required',
+           'guardian2' => 'required'
        ]);
        Student::create($data);
        return redirect()->back()->with('success','Added successfuly');
@@ -121,4 +123,5 @@ class StudentController extends Controller
 
 	    return redirect()->back()->with('success','Deleted successfuly');
     }
+
 }

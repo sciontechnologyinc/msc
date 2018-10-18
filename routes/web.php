@@ -53,6 +53,7 @@
             Route::post         ('/update/{id}/save',            'StudentController@update'               )->name('student_update');
             Route::post         ('/delete/{id}',                 'StudentController@destroy'              )->name('student_destroy');
         });
+        Route::resource('sectionTrash','SectionTrashController');
 
         //Department
         Route::prefix('department')->group(function(){
@@ -103,9 +104,6 @@ Route::resource('fetcherTrash','FetcherTrashController');
 Route::resource('studentTrash','StudentTrashController');
 Route::resource('departmentTrash','DepartmentTrashController');
 Route::resource('gradeTrash','GradeTrashController');
-Route::resource('sectionTrash','SectionTrashController');
-
-
 
 //default
 Auth::routes();

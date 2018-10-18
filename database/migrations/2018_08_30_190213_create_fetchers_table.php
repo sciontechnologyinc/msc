@@ -19,6 +19,7 @@ class CreateFetchersTable extends Migration
             $table->string('gender');
             $table->string('birthday');
             $table->string('rfidno');
+            $table->string('type');
             $table->string('status')->default('OUT');
             $table->string('address');
             $table->string('contact');
