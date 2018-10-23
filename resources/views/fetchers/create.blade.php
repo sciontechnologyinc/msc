@@ -45,8 +45,9 @@
             <div class="form-group">
                  {!!Form::label('contact', 'Contact', array('class' => 'form-control-label'))!!} <small>(09)123456789</small>
                  {!!Form::number('contact',null, ['placeholder' => 'Contact', 'class' => 'form-control col-lg-12', 'id' => 'txtPhone', 'required' => '' ])!!}
+                 &nbsp;&nbsp;<span id="spnPhoneStatus"></span>
             </div>
-            <span id="spnPhoneStatus"></span>
+            
 
             <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -61,7 +62,7 @@
   
     </div>
 
-       <script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="../../plugins/jquery/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
     $('#txtPhone').blur(function(e) {
