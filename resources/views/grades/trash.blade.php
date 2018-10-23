@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="block-header">
                 <h2>
-                    DEPARTMENT'S FORM
+                    GRADE'S FORM
                 </h2>
             </div>
   @if($message = Session::get('success'))
@@ -29,7 +29,10 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Section's Info</h2>
+                            <h2>Trash Lists</h2>
+                            <ul class="header-dropdown m-r--5">
+                                <a class="btn btn-primary" href="{{url('grade/add')}}">Add Department</a>
+                            </ul>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
                                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -45,11 +48,10 @@
                         </div>
                         <div class="body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover" id="example">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Grade</th>
                                             <th>Section</th>
                                             <th>Action</th>
      
@@ -58,22 +60,20 @@
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Grade</th>
                                             <th>Section</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody> 
-                                        @foreach($sections as $index => $section)
+                                        @foreach($grades as $index => $grade)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            <td>{{ $section->grade }}</td>
-                                            <td>{{ $section->section }}</td>
+                                            <td>{{ $grade->grade }}</td>
+                                            
                                             <td>
                                             <div class="form-group" style="display:inline-flex">
-                                            <a class="btn btn-success btn-sm mr-1" href="section/update/{!! $section->id !!}"><i class="fa fa-edit"></i></a>
-                                            {!! Form::open(['id' => 'deleteForm', 'method' => 'post', 'url' => '/section/delete/' . $section->id]) !!}
-                                            {{ Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm', 'rel' => 'tooltip', 'title' => 'Delete'] )  }}
+                                            {!! Form::open(['id' => 'deleteForm', 'method' => 'DELETE', 'url' => '/gradeTrash/' . $grade->id]) !!}
+                                            {{ Form::button('<i class="fa fa-window-restore"></i>', ['type' => 'submit', 'class' => 'btn btn-success btn-sm', 'rel' => 'tooltip', 'title' => 'Restore'] )  }}
                                             {!! Form::close() !!}
                                             </div>
                                             </td>

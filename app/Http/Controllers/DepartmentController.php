@@ -93,7 +93,7 @@ class DepartmentController extends Controller
     public function destroy($id)
     {
         $department = Department::find($id);
-	    $department->destroy($id);
+	    $department->delete($id);
 
 	    return redirect()->back()->with('success','Deleted successfuly');
     }

@@ -31,12 +31,13 @@
                         <div class="header">
                             <h2>Student's Info</h2>
                             <ul class="header-dropdown m-r--5">
-                                <a class="btn btn-primary" href="{{url('student/add')}}">Add Student</a>
+                                <a class="btn btn-primary"  data-toggle="modal" data-target="#addstudentmodal">Add Student</a>
+                                <a class="btn btn-warning" data-toggle="modal" data-target="#studentArchived">Archived</a>
                             </ul>
                         </div>
                         <div class="body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                <table class="table table-bordered table-striped table-hover " id="example">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -73,19 +74,21 @@
                                             <td>{{ $student->section }}</td>
                                             <td>{{ $student->fetcher }}</td>
                                             
-                                            <td><center>
+                                            <td>
                                             <div class="form-group" style="display:inline-flex">
                                             <a class="btn btn-success btn-sm mr-1" href="student/update/{!! $student->id !!}"><i class="fa fa-edit"></i></a>
                                             {!! Form::open(['id' => 'deleteForm', 'method' => 'post', 'url' => 'student/delete/' . $student->id]) !!}
                                             {{ Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm', 'rel' => 'tooltip', 'title' => 'Delete'] )  }}
                                             {!! Form::close() !!}
                                             </div>
-                                            </center></td>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     @endforeach
                                 </table>
                             </div>
+                            @include('students.create');
+                            @include('students.trash');
                         </div>
                     </div>
                 </div>

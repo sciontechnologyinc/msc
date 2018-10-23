@@ -33,49 +33,25 @@
                                 <i class="material-icons">donut_large</i>
                                 <span>Dashboard</span>
                             </a>
-                        </li>
+                    </li>
                     <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
+                        <a href="{{ url('teacher') }}">
                             <i class="material-icons">swap_calls</i>
-                            <span>Teachers</span>
+                            <span>Teacher</span>
                         </a>
-                        <ul class="ml-menu">
-                            <li>
-                            <a href="{{ url('teacher/add') }}">Add Teacher</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('teacher') }}">List of Teachers</a>
-                            </li>
-                        </ul>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
+                        <a href="{{ url('fetcher') }}">
                             <i class="material-icons">view_list</i>
-                            <span>Fetchers</span>
+                            <span>Fetcher</span>
                         </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="{{ url('fetcher/add') }}">Add Fetcher</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('fetcher') }}">List of Fetchers</a>
-                            </li>
-                        </ul>
                     </li>
-                        <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
-                                <i class="material-icons">assignment</i>
-                                <span>Students</span>
-                            </a>
-                            <ul class="ml-menu">
-                                <li>
-                                    <a href="{{ url('student/add') }}">Add Student</a>
-                                </li>
-                                <li>
-                                    <a href="{{ url('student') }}">List of Students</a>
-                                </li>
-                            </ul>
-                        </li>
+                    <li>
+                        <a href="{{ url('student') }}">
+                            <i class="material-icons">assignment</i>
+                            <span>Student</span>
+                        </a>
+                    </li>
                         <li class="header">Maintenance</li>
                         <li>
                             <a href="javascript:void(0);" class="menu-toggle">
@@ -88,6 +64,9 @@
                                 </li>
                                 <li>
                                     <a href="{{ url('department') }}">List of Department</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('departmentTrash') }}">Trash</a>
                                 </li>
                             </ul>
                         </li>
@@ -103,6 +82,9 @@
                                 <li>
                                     <a href="{{ url('grade') }}">List of Grade</a>
                                 </li>
+                                <li>
+                                    <a href="{{ url('gradeTrash') }}">Trash</a>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -116,6 +98,9 @@
                                 </li>
                                 <li>
                                     <a href="{{ url('section') }}">List of Section</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('sectionTrash') }}">Trash</a>
                                 </li>
                             </ul>
                         </li>

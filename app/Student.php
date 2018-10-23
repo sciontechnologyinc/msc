@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Student extends Model
 {
+    use SoftDeletes;
     protected $table="students";
 	protected $fillable = [
         'firstname',
@@ -17,6 +19,8 @@ class Student extends Model
         'schoolyear',
         'contact',
         'fetcher',
-        'guardian'
+        'guardian',
+        'guardian1',
+        'guardian2'
 	];
 }

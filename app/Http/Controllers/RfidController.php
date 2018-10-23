@@ -22,9 +22,9 @@ class RfidController extends Controller
         $fetcher = Fetcher::where('name', $id)->update(request()->all());
     }
 
-    public function students()
+    public function students($id)
     {
-        $students = Student::orderBy('id')->get();
+        $students = Student::where("section",$id)->orderBy('id')->get();
         return response()->json(['success' => true, 'fetchers' => $students]);
     }
    

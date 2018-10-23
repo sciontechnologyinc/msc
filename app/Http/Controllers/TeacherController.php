@@ -8,6 +8,7 @@ use App\Section;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use DB;
 
 class TeacherController extends Controller
 {
@@ -18,8 +19,14 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = User::orderBy('id')->get();
-        return view('teachers.index', ['teachers' => $teachers]);
+        $deletedteachers = DB::table('users')
+        ->whereNotNull('deleted_at')
+        ->get();
+
+        $teachers = User::where('admin', '!=' , 1)->orderBy('id')->get();
+        $departments = Department::orderBy('id')->get();
+        $sections = Section::orderBy('id')->get();
+        return view('teachers.index', ['teachers' => $teachers,'departments' => $departments, 'sections' => $sections,'deletedteachers'=> $deletedteachers]);
     }
     public function dropdown()
     {
@@ -131,7 +138,7 @@ class TeacherController extends Controller
     public function destroy($id)
     {
         $teacher = User::find($id);
-	    $teacher->destroy($id);
+	    $teacher->delete($id);
 
 	    return redirect()->back()->with('success','Deleted successfuly');
     }

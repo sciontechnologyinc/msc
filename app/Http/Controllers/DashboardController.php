@@ -31,7 +31,7 @@ class DashboardController extends Controller
  
 
         $t_students = Student::all()->count();
-        $t_teachers = Teacher::all()->count();
+        $t_teachers = User::all()->count();
         $t_fetchers = Fetcher::all()->count();
         $t_users = User::all()->count();
         $logtrails = Logtrail::orderBy('id')->get();

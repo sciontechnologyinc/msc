@@ -31,12 +31,13 @@
                         <div class="header">
                             <h2>Fetcher's Info</h2>
                             <ul class="header-dropdown m-r--5">
-                                    <a class="btn btn-primary" href="{{url('fetcher/add')}}">Add Fetcher</a>
+                                <a class="btn btn-primary"  data-toggle="modal" data-target="#addfetchermodal">Add Fetcher</a>
+                                <a class="btn btn-warning" data-toggle="modal" data-target="#fetcherArchived">Archived</a>
                             </ul>
                         </div>
                         <div class="body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                <table class="table table-bordered table-striped table-hover" id="example">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -44,10 +45,10 @@
                                             <th>Gender</th>
                                             <th>Birthday</th>
                                             <th>RFID No.</th>
+                                            <th>Type</th>
                                             <th>Address</th>
                                             <th>Contact</th>
                                             <th>Action</th>
-     
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -57,6 +58,7 @@
                                             <th>Gender</th>
                                             <th>Birthday</th>
                                             <th>RFID No.</th>
+                                            <th>Type</th>
                                             <th>Address</th>
                                             <th>Contact</th>
                                             <th>Action</th>
@@ -70,9 +72,9 @@
                                             <td>{{ $fetcher->gender }}</td>
                                             <td>{{ $fetcher->birthday }}</td>
                                             <td>{{ $fetcher->rfidno }}</td>
+                                            <td>{{ $fetcher->type }}</td>
                                             <td>{{ $fetcher->address }}</td>
                                             <td>{{ $fetcher->contact }}</td>
-                                            
                                             <td>
                                             <div class="form-group" style="display:inline-flex">
                                             <a class="btn btn-success btn-sm mr-1" href="fetcher/update/{!! $fetcher->id !!}"><i class="fa fa-edit"></i></a>
@@ -85,6 +87,8 @@
                                     </tbody>
                                     @endforeach
                                 </table>
+                                @include('fetchers.create')
+                                @include('fetchers.trash')
                             </div>
                         </div>
                     </div>
@@ -93,5 +97,4 @@
         </div>
     </section>
 </section>
-
 @endsection

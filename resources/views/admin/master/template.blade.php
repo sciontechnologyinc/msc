@@ -19,13 +19,19 @@
     <link href="../../css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../../css/themes/all-themes.css" rel="stylesheet" />
     <style>
         input[type='checkbox']
             {
                left: 25px!important;
                opacity: 10 !important;
+            }
+            .dropup, .dropdown {
+                position: relative;
+                margin-top: 2%;
+            }
+            td.dataTables_empty {
+                display: none !important;
             }
     </style>
 </head>
@@ -40,8 +46,10 @@
 
         @yield('content')
     </div>
+   
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="../../plugins/momentjs/moment.js"></script>
     <script src="../../plugins/jquery-datatable/jquery.dataTables.js"></script>
     <script src="../../plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
@@ -63,6 +71,7 @@
     <script src="../../js/demo.js"></script>
     <script src="../../js/pages/tables/jquery-datatable.js"></script>
     <script src="../../js/demo.js"></script>
+
     <script src="{{ URL::asset('js/csv.js') }}"></script>
 </body>
 

@@ -20,7 +20,7 @@
             Route::get          ('/delete/{id}',                'RfidController@delete'                   )->name('rfid_delete');
             Route::get          ('/get/{id}',                   'RfidController@logtrail'                 )->name('rfid_getlogtrail');
             Route::post         ('/save/logtrail',              'RfidController@insertlogtrail'           )->name('rfid_getlogtrail');
-            Route::get          ('/students',                   'RfidController@students'                 )->name('rfid_student');
+            Route::post         ('/students/{id}',              'RfidController@students'                 )->name('rfid_student');
             Route::post         ('/update/status/{id}',         'RfidController@status'                   )->name('rfid_status');
         });
 
@@ -53,6 +53,7 @@
             Route::post         ('/update/{id}/save',            'StudentController@update'               )->name('student_update');
             Route::post         ('/delete/{id}',                 'StudentController@destroy'              )->name('student_destroy');
         });
+        Route::resource('sectionTrash','SectionTrashController');
 
         //Department
         Route::prefix('department')->group(function(){
@@ -62,6 +63,7 @@
             Route::get          ('/update/{id}',                 'DepartmentController@edit'              )->name('department_edit');
             Route::post         ('/update/{id}/save',            'DepartmentController@update'            )->name('department_update');
             Route::post         ('/delete/{id}',                 'DepartmentController@destroy'           )->name('department_destroy');
+
         });
 
         //Grade
@@ -94,6 +96,14 @@
             Route::post         ('/update/{id}/save',            'SectionController@update'               )->name('dashboard_update');
             Route::post         ('/delete/{id}',                 'SectionController@destroy'              )->name('dashboard_destroy');
         });
+
+
+//Trash
+Route::resource('teacherTrash','TeacherTrashController');
+Route::resource('fetcherTrash','FetcherTrashController');
+Route::resource('studentTrash','StudentTrashController');
+Route::resource('departmentTrash','DepartmentTrashController');
+Route::resource('gradeTrash','GradeTrashController');
 
 //default
 Auth::routes();

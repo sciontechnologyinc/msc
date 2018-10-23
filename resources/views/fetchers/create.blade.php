@@ -1,77 +1,100 @@
-@extends('admin.master.template')
-
-@section('content')
-<section class="content">
-        <div class="container-fluid">
-            <div class="block-header">
-                <h2>
-                    FETCHER'S FORM
-                </h2>
-            </div>
-    @if($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
-    </div>
-@endif
-
-    @if(count($errors) > 0 )
-    <div class="alert alert-danger">
-        <strong>Whoooppss !!</strong> There were some problem with your input. <br>
-        <ul>
-            @foreach($errors->all() as $error)
-                <li> {{ $error }} </li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-            <!-- Basic Validation -->
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>Fetcher's Info</h2>
-                        </div>
-                        <div class="body">
-                    {!! Form::open(['id' => 'dataForm', 'url' => 'fetcher/save']) !!}
-                           <div class="form-group">
-                                {!!Form::label('name', 'Name', array('class' => 'form-control-label'))!!}
-                                {!!Form::text('name',null, ['placeholder' => 'Name', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
-                           </div>
-
-                           <div class="form-group"><label class="form-control-label">Gender</label>
-                            {!! Form::select('gender', array('male' => 'Male', 'female' => 'Female'), null,array('class' => 'form-control', 'required' => '')) !!}
-                           </div>
-
-                            <div class="form-group">
-                                <label>Birthday</label>
-                                <div class="iconic-input">
-                                    <i class="fa fa-calendar"></i>
-                                    <input type="date" class="form-control" name="birthday" placeholder="Birthday" value="2018-08-15" required="">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                    {!!Form::label('rfidno', 'RFID No', array('class' => 'form-control-label'))!!}
-                                    {!!Form::number('rfidno',null, ['placeholder' => 'RFID No', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
-                            </div>
-
-                           <div class="form-group">
-                                {!!Form::label('address', 'Address', array('class' => 'form-control-label'))!!}
-                                {!!Form::text('address',null, ['placeholder' => 'Address', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
-                           </div>
-
-                           <div class="form-group">
-                                {!!Form::label('contact', 'Contact', array('class' => 'form-control-label'))!!}
-                                {!!Form::number('contact',null, ['placeholder' => 'Contact', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
-                           </div>
-                                {!!Form::submit('Create Fetcher', ['id' => 'addForm','class' => 'btn btn-primary  col-lg-2 offset-7']) !!}
-                        </div>
-                    {!! Form::close() !!}
-                    </div>
-                </div>
-            </div>
+<div id="addfetchermodal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Fetcher</h4>
         </div>
-    </section>
-</section>
+        <div class="modal-body">
+            {!! Form::open(['id' => 'dataForm', 'url' => 'fetcher/save']) !!}
+            <div class="form-group">
+                 {!!Form::label('name', 'Name', array('class' => 'form-control-label'))!!}
+                 {!!Form::text('name',null, ['placeholder' => 'Name', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
+            </div>
 
-@endsection
+            <div class="form-group"><label class="form-control-label">Gender</label>
+             {!! Form::select('gender', array('male' => 'Male', 'female' => 'Female'), null,array('class' => 'form-control', 'required' => '')) !!}
+            </div>
+
+             <div class="form-group">
+                 <label>Birthday</label>
+                 <div class="iconic-input">
+                     <i class="fa fa-calendar"></i>
+                     <input type="text" required="" id="dateofbirth" class="form-control">
+                 </div>
+             </div>
+             <div class="form-group">
+                     {!!Form::label('rfidno', 'RFID No', array('class' => 'form-control-label'))!!}
+                     {!!Form::number('rfidno',null, ['placeholder' => 'RFID No', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
+             </div>
+             <div class="form-group">
+                {!!Form::label('Type', 'Type', array('class' => 'form-control-label'))!!}
+                     <select name="type" class="form-control">
+                             <option value="" disabled>Fetcher Type</option>
+                             <option value="schoolservice">School Service</option>
+                             <option value="parent">Parent</option>
+                             <option value="guardian">Guardian</option>
+                    </select>
+            </div>
+            <div class="form-group">
+                 {!!Form::label('address', 'Address', array('class' => 'form-control-label'))!!}
+                 {!!Form::text('address',null, ['placeholder' => 'Address', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
+            </div>
+
+            <div class="form-group">
+                 {!!Form::label('contact', 'Contact', array('class' => 'form-control-label'))!!} <small>(09)123456789</small>
+                 {!!Form::number('contact',null, ['placeholder' => 'Contact', 'class' => 'form-control col-lg-12', 'id' => 'txtPhone', 'required' => '' ])!!}
+            </div>
+            <span id="spnPhoneStatus"></span>
+
+            <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    {!!Form::submit('Create Fetcher', ['id' => 'addForm','class' => 'btn btn-primary']) !!}
+              </div>
+                 
+         </div>
+     {!! Form::close() !!}
+        </div>
+      
+      </div>
+  
+    </div>
+
+       <script src="../../plugins/jquery/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#txtPhone').blur(function(e) {
+        if (validatePhone('txtPhone')) {
+            $('#spnPhoneStatus').html('Valid');
+            $('#spnPhoneStatus').css('color', 'green');
+        }
+        else {
+            $('#spnPhoneStatus').html('Invalid');
+            $('#spnPhoneStatus').css('color', 'red');
+        }
+    });
+
+$('#dateofbirth').datepicker({
+  maxDate: '-18Y',
+  dateFormat: 'dd/mm/yy',
+  changeMonth: true,
+  changeYear: true,
+  yearRange: '-100:+0'
+});
+   
+});
+
+
+
+function validatePhone(txtPhone) {
+    var a = document.getElementById(txtPhone).value;
+    var filter = /^\(?(\d{2})\)?[-\. ]?(\d{9})$/;
+    if (filter.test(a)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+</script>

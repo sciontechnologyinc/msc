@@ -18,6 +18,8 @@ class CreateSectionsTable extends Migration
             $table->string('grade');
             $table->string('section');
             $table->timestamps();
+            $table->time('deleted_at')->nullable();
+
         });
     }
 

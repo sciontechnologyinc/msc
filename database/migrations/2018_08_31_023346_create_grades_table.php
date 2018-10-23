@@ -17,6 +17,8 @@ class CreateGradesTable extends Migration
             $table->increments('id');
             $table->string('grade');
             $table->timestamps();
+            $table->time('deleted_at')->nullable();
+
         });
     }
 

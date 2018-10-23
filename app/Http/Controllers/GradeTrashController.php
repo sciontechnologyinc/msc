@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Fetcher;
+use App\Http\Controllers\Controller;
+
 use App\Grade;
 use DB;
-class FetcherController extends Controller
+
+class GradeTrashController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +17,11 @@ class FetcherController extends Controller
      */
     public function index()
     {
-        $fetchers = Fetcher::orderBy('id')->get();
-
-        $trashfetchers = DB::table('fetchers')
+        $grades = DB::table('grades')
         ->whereNotNull('deleted_at')
         ->get();
-   
-        return view('fetchers.index', ['fetchers' => $fetchers,'trashfetchers'=>$trashfetchers]);
+        
+        return view('grades/trash', ['grades' => $grades]);
     }
 
     /**
@@ -31,7 +31,7 @@ class FetcherController extends Controller
      */
     public function create()
     {
-        return view('fetchers.create');
+        //
     }
 
     /**
@@ -42,19 +42,7 @@ class FetcherController extends Controller
      */
     public function store(Request $request)
     {
-        $fetcher = $request->all();
-        $data = $request->validate([
-           'name' => 'required',
-           'gender' => 'required',
-           'birthday' => 'required',
-           'rfidno' => 'required|unique:fetchers',
-           'type' => 'required',
-           'address' => 'required',
-           'contact' => 'required',
-       ]);
-       Fetcher::create($data);
-       return redirect()->back()->with('success','Added successfuly');
-
+        //
     }
 
     /**
@@ -76,8 +64,7 @@ class FetcherController extends Controller
      */
     public function edit($id)
     {
-        $fetcher = Fetcher::find($id);
-        return view('fetchers/edit', ['fetcher' => $fetcher]);
+        //
     }
 
     /**
@@ -89,11 +76,7 @@ class FetcherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $fetcher = Fetcher::find($id);
-        $data = $request->all();
-        $fetcher->update($data);
-
-        return redirect('fetcher')->with('success','Updated successfuly');
+        //
     }
 
     /**
@@ -104,9 +87,9 @@ class FetcherController extends Controller
      */
     public function destroy($id)
     {
-        $fetcher = Fetcher::find($id);
-	    $fetcher->delete($id);
+        $grade = Grade::withTrashed()->find($id)->restore();
+        
+	    return redirect()->back()->with('success','Restored successfuly');
 
-	    return redirect()->back()->with('success','Deleted successfuly');
     }
 }

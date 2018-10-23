@@ -33,12 +33,13 @@
                             <h2>Teacher's Info</h2>
                            
                             <ul class="header-dropdown m-r--5">
-                            <a class="btn btn-primary" href="{{url('teacher/add')}}">Add Teacher</a>
+                            <a class="btn btn-primary"  data-toggle="modal" data-target="#addteachermodal">Add Teacher</a>
+                            <a class="btn btn-warning" data-toggle="modal" data-target="#teacherArchived">Archived</a>
                             </ul>
                         </div>
                         <div class="body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                <table class="table table-bordered table-striped table-hover" id="example">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -70,7 +71,7 @@
                                         @foreach($teachers as $index => $teacher)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            <td>{{ $teacher->firstname }} {{ $teacher->lastname }}</td>
+                                            <td>{{ $teacher->name}} {{ $teacher->lastname }}</td>
                                             <td>{{ $teacher->email }}</td>
                                             <td>{{ $teacher->gender }}</td>
                                             <td>{{ $teacher->birthday }}</td>
@@ -90,6 +91,9 @@
                                     </tbody>
                                     @endforeach
                                 </table>
+                                @include('teachers.create')
+                                @include('teachers.trash')
+                                  </div>
                             </div>
                         </div>
                     </div>
