@@ -56,7 +56,6 @@
                 <table id="table_id" class="display">
                     <thead>
                         <tr>
-                            <th>#</th>
                             <th>Fetcher</th>
                             <th>Status</th>
                             <th>Section</th>
@@ -93,7 +92,6 @@
              for (x=0; x < data.fetchers.length; x++){
                 var y = data.fetchers[x];
                 $('tbody').append('<tr style="background-color:'+y.color+'!important">'+
-                            '<td>'+y.id+'</td>'+
                             '<td>'+y.fetcher+'</td>'+
                             '<td>'+y.status+'</td>'+
                             '<td>'+y.section+'</td>'+
