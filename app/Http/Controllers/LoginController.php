@@ -13,32 +13,46 @@ class LoginController extends Controller
 
     public function login(Request $request){
 
-        $this->validate($request, [
-            'email' => 'required|email|exists:users,email',
-            'password' => 'required|min:6|exists:users,password'
-        ]);
+        $messages = [
+            "email.required" => "Email is required",
+            "email.email" => "Email is not valid",
+            "email.exists" => "Email doesn't exists",
+            "password.required" => "Password is required",
+            "password.min" => "Password must be at least 6 characters"
+        ];
 
-        
-        if(Auth::attempt([
-            'email'      => $request->email,
-            'password'   => $request->password
-        ]))
+        // validate the form data
+        $validator = Validator::make($request->all(), [
+                'email' => 'required|email|exists:users,email',
+                'password' => 'required|min:6'
+            ], $messages);
+        $validator->getMessageBag()->add('password', 'Wrong password');
 
-      
-        {
-            $user = User::where('email', $request->email)->first();
-
-            if($user->is_admin())
-
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        } else {
+            // attempt to log
+            if (Auth::attempt(['email' => $request->email, 'password' => $request->password ])) 
             {
+            $user = User::where('email', $request->email)->first();
+            if($user->is_admin())
+                {
                 return redirect()->route('dashboard.index');
+                }
+            else 
+                {
+                return redirect()->route('monitoring.index');
+                }
             }
 
-                return redirect()->route('monitoring.index');
+            return redirect()->back()->withInput($request->only('email', 'remember'))->withErrors([
+                'password' => 'Wrong password',
+            ]);
+           
         }
 
-            
-            return redirect()->back();
+
+       
                 
     }
 
