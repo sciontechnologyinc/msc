@@ -12,7 +12,7 @@ class RfidController extends Controller
     {
         $students = Student::orderBy('id')->get();
         if($request->ajax()){
-            return response()->json(['success' => true, 'students' => $students]);
+            return response()->json(['students' => $students]);
        }
         return view('monitoring.index');
     }
@@ -21,24 +21,46 @@ class RfidController extends Controller
     {
         $fetcher = Fetcher::where('name', $id)->update(request()->all());
     }
+    public function todayfetcher($id)
+    {
+        $todayfetcher = Student::where('fetcher', $id)
+                             ->orWhere('guardian', $id)
+                             ->orWhere('guardian1', $id)
+                             ->orWhere('guardian2', $id)
+                             ->update(request()->all());
+       
+    }
 
+    public function attendance($id,$name)
+    {
+            $student = Student::find($id);
+            $student->attendance = $name;
+            $student->save();
+    }
+    
     public function students($id)
     {
+        $students = Student::where("section",$id)->where("attendance","Present")->orderBy('id')->get();
+        return response()->json(['fetchers' => $students]);
+    }
+    public function attendanceDisplay($id)
+    {
         $students = Student::where("section",$id)->orderBy('id')->get();
-        return response()->json(['success' => true, 'fetchers' => $students]);
+        return response()->json(['fetchers' => $students]);
     }
    
     public function get($id)
     {
-        $fetcher = Fetcher::where("rfidno", $id)->select('id','name','status')->get();
-        return response()->json(['success' => true, 'fetchers' => $fetcher]);
+        $fetcher = Fetcher::where("rfidno", $id)->select('id','name','status','type')->get();
+        return response()->json(['fetchers' => $fetcher]);
     }
 
     public function logtrail($id)
     {
-        $student = Student::where("fetcher", $id)->select('firstname','lastname','gender','birthday',
-        'grade','section','schoolyear','contact','fetcher','guardian','status','time')->get();
-        return response()->json(['success' => true, 'students' => $student]);
+        $student = Student::where("fetcher", $id)->orWhere("guardian", $id)
+        ->orWhere("guardian1", $id)->orWhere("guardian2", $id)->select('firstname','lastname','gender','birthday',
+        'grade','section','schoolyear','contact','fetcher','guardian','status','time','todayfetcher')->get();
+        return response()->json(['students' => $student]);
     }
 
     public function insertlogtrail(Request $request)

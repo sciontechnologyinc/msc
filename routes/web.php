@@ -12,16 +12,19 @@
 */
         // RFID
         Route::prefix('rfids')->group(function(){
-            Route::get          ('/',                           'RfidController@index'                    )->name('rfid');
-            Route::post         ('/get/{id}',                   'RfidController@get'                      )->name('rfid_get');
-            Route::post         ('/save',                       'RfidController@store'                    )->name('rfid_save');
-            Route::post         ('/update/{fetcher}',           'RfidController@update'                   )->name('rfid_update');
-            Route::post         ('/update/{id}/save',           'RfidController@update_save'              )->name('rfid_update_save');
-            Route::get          ('/delete/{id}',                'RfidController@delete'                   )->name('rfid_delete');
-            Route::get          ('/get/{id}',                   'RfidController@logtrail'                 )->name('rfid_getlogtrail');
-            Route::post         ('/save/logtrail',              'RfidController@insertlogtrail'           )->name('rfid_getlogtrail');
-            Route::post         ('/students/{id}',              'RfidController@students'                 )->name('rfid_student');
-            Route::post         ('/update/status/{id}',         'RfidController@status'                   )->name('rfid_status');
+            Route::get          ('/',                               'RfidController@index'                    )->name('rfid');
+            Route::post         ('/get/{id}',                       'RfidController@get'                      )->name('rfid_get');
+            Route::post         ('/save',                           'RfidController@store'                    )->name('rfid_save');
+            Route::post         ('/update/{fetcher}',               'RfidController@update'                   )->name('rfid_update');
+            Route::post         ('/update/{id}/save',               'RfidController@update_save'              )->name('rfid_update_save');
+            Route::get          ('/delete/{id}',                    'RfidController@delete'                   )->name('rfid_delete');
+            Route::get          ('/get/{id}',                       'RfidController@logtrail'                 )->name('rfid_getlogtrail');
+            Route::post         ('/save/logtrail',                  'RfidController@insertlogtrail'           )->name('rfid_getlogtrail');
+            Route::post         ('/students/{id}',                  'RfidController@students'                 )->name('rfid_student');
+            Route::post         ('/attendance/{id}',                'RfidController@attendanceDisplay'        )->name('rfid_attendance');
+            Route::post         ('/update/status/{id}',             'RfidController@status'                   )->name('rfid_status');
+            Route::post         ('/update/todayfetcher/{id}',       'RfidController@todayfetcher'             )->name('rfid_todayfetcher');
+            Route::post         ('/update/attendance/{id}/{name}',  'RfidController@attendance'               )->name('rfid_attendance');
         });
 
         //Teacher
@@ -95,6 +98,7 @@
             Route::get          ('/update/{id}',                 'SectionController@edit'                 )->name('dashboard_edit');
             Route::post         ('/update/{id}/save',            'SectionController@update'               )->name('dashboard_update');
             Route::post         ('/delete/{id}',                 'SectionController@destroy'              )->name('dashboard_destroy');
+            Route::get          ('/logtrail',                    'DashboardController@logtrail'           )->name('dashboard_logtrail');
         });
 
 

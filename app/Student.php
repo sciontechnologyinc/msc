@@ -21,6 +21,8 @@ class Student extends Model
         'fetcher',
         'guardian',
         'guardian1',
-        'guardian2'
+        'guardian2',
+        'todayfetcher',
+        'attendance'
 	];
 }

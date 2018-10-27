@@ -27,6 +27,9 @@ class CreateStudentsTable extends Migration
             $table->string('guardian')->nullable();
             $table->string('guardian1')->nullable();
             $table->string('guardian2')->nullable();
+            $table->string('todayfetcher')->default('');
+            $table->string('attendance')->default('Present');
+            $table->string('type')->default('');
             $table->string('status')->default('OUT');
             $table->string('time')->default('00:00');
             $table->string('color')->default('');

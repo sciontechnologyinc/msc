@@ -28,10 +28,8 @@ class DashboardController extends Controller
      * @return View
      */
     public function index(){
- 
-
         $t_students = Student::all()->count();
-        $t_teachers = User::all()->count();
+        $t_teachers = User::all()->where("admin","0")->count();
         $t_fetchers = Fetcher::all()->count();
         $t_users = User::all()->count();
         $logtrails = Logtrail::orderBy('id')->get();
@@ -42,13 +40,13 @@ class DashboardController extends Controller
                 't_teachers'        =>  $t_teachers,
                 't_fetchers'        =>  $t_fetchers,
                 't_users'             =>  $t_users,
-  
             ]);
     }
 
-    /**
-     *  get the sub month of the given integer
-     */
+    public function logtrail(){
+        $logtrails = Logtrail::orderBy('id')->get();
+        return response()->json(['logtrails' => $logtrails]);
+    }
     private function getPrevDate($num){
         return Carbon::now()->subMonths($num)->toDateTimeString();
     }

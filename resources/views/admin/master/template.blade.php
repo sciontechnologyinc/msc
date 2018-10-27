@@ -46,7 +46,6 @@
 
         @yield('content')
     </div>
-    <script src="{{ asset('js/app.js') }}"></script>
     <script src="../../plugins/jquery/jquery.min.js"></script>
     <script src="../../plugins/momentjs/moment.js"></script>
     <script src="../../plugins/jquery-datatable/jquery.dataTables.js"></script>
@@ -71,6 +70,7 @@
     <script src="../../js/demo.js"></script>
 
     <script src="{{ URL::asset('js/csv.js') }}"></script>
+    @yield('script')
 </body>
 
 </html>
