@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Corinthians High School</title>
+    <title>Corinthians School</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -19,14 +19,28 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+    main.py-4 {
+    background: url(/images/backgroundimage.jpg);
+    background-size: cover;
+    height: -webkit-fill-available;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+    img.chslogo {
+    width: 51px;
+        }
+
+    </style>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Corinthians High School') }}
+                    {{ config('app.name', 'Corinthians School') }}
                 </a>
+                <img src="/images/chslogo.png" class="chslogo" alt="">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -67,10 +81,11 @@
                 </div>
             </div>
         </nav>
-
+        <div class="overlay">
         <main class="py-4">
             @yield('content')
         </main>
+        </div>
     </div>
 </body>
 </html>

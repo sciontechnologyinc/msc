@@ -46,7 +46,10 @@
 
         @yield('content')
     </div>
+   
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="../../plugins/momentjs/moment.js"></script>
     <script src="../../plugins/jquery-datatable/jquery.dataTables.js"></script>
     <script src="../../plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>

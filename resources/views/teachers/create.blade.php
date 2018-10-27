@@ -31,7 +31,7 @@
                  <label>Birthday</label>
                  <div class="iconic-input">
                      <i class="fa fa-calendar"></i>
-                     <input type="date" class="form-control" name="birthday" placeholder="Birthday" value="2018-08-15" required="">
+                     <input type="date" class="form-control" id="dateofbirth" name="birthday" placeholder="Birthday" value="2018-08-15" required="">
                  </div>
              </div>
          
@@ -59,10 +59,11 @@
             </div>
 
             <div class="form-group col-lg-12">
-                 {!!Form::label('contact', 'Contact', array('class' => 'form-control-label'))!!}
-                 {!!Form::number('contact',null, ['placeholder' => 'Contact', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
+                 {!!Form::label('contact', 'Contact', array('class' => 'form-control-label'))!!} <small>(09)123456789</small>
+                 {!!Form::number('contact',null, ['placeholder' => 'Contact', 'class' => 'form-control col-lg-12', 'id' => 'txtPhone', 'required' => '' ])!!}
+                 &nbsp;&nbsp;<span id="spnPhoneStatus"></span>
             </div>
-
+            
             <div class="form-group col-lg-12"><label class="form-control-label">Password</label>
              <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>
             </div>
@@ -82,3 +83,40 @@
       </div>
   
     </div>
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#txtPhone').blur(function(e) {
+        if (validatePhone('txtPhone')) {
+            $('#spnPhoneStatus').html('Valid');
+            $('#spnPhoneStatus').css('color', 'green');
+        }
+        else {
+            $('#spnPhoneStatus').html('Invalid');
+            $('#spnPhoneStatus').css('color', 'red');
+        }
+    });
+
+$('#dateofbirth').datepicker({
+  maxDate: '-18Y',
+  dateFormat: 'dd/mm/yy',
+  changeMonth: true,
+  changeYear: true,
+  yearRange: '-100:+0'
+});
+   
+});
+
+
+
+function validatePhone(txtPhone) {
+    var a = document.getElementById(txtPhone).value;
+    var filter = /^\(?(\d{2})\)?[-\. ]?(\d{9})$/;
+    if (filter.test(a)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+</script>

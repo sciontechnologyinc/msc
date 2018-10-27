@@ -21,10 +21,9 @@
                  <label>Birthday</label>
                  <div class="iconic-input">
                      <i class="fa fa-calendar"></i>
-                     <input type="date" class="form-control" name="birthday" placeholder="Birthday" value="2018-08-15" required="">
+                     <input type="text" required="" id="dateofbirth" class="form-control">
                  </div>
              </div>
-
              <div class="form-group">
                      {!!Form::label('rfidno', 'RFID No', array('class' => 'form-control-label'))!!}
                      {!!Form::number('rfidno',null, ['placeholder' => 'RFID No', 'class' => 'form-control col-lg-12', 'required' => '' ])!!}
@@ -46,8 +45,9 @@
             <div class="form-group">
                  {!!Form::label('contact', 'Contact', array('class' => 'form-control-label'))!!} <small>(09)123456789</small>
                  {!!Form::number('contact',null, ['placeholder' => 'Contact', 'class' => 'form-control col-lg-12', 'id' => 'txtPhone', 'required' => '' ])!!}
+                 &nbsp;&nbsp;<span id="spnPhoneStatus"></span>
             </div>
-            <span id="spnPhoneStatus"></span>
+            
 
             <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -61,8 +61,8 @@
       </div>
   
     </div>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
+<script src="../../plugins/jquery/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
     $('#txtPhone').blur(function(e) {
@@ -75,7 +75,18 @@ $(document).ready(function() {
             $('#spnPhoneStatus').css('color', 'red');
         }
     });
+
+$('#dateofbirth').datepicker({
+  maxDate: '-18Y',
+  dateFormat: 'dd/mm/yy',
+  changeMonth: true,
+  changeYear: true,
+  yearRange: '-100:+0'
 });
+   
+});
+
+
 
 function validatePhone(txtPhone) {
     var a = document.getElementById(txtPhone).value;
@@ -87,4 +98,4 @@ function validatePhone(txtPhone) {
         return false;
     }
 }
-    </script>
+</script>

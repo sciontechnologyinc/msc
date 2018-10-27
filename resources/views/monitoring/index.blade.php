@@ -69,7 +69,6 @@
                 <table id="table_id" class="display">
                     <thead>
                         <tr>
-                            <th>#</th>
                             <th>Fetcher</th>
                             <th>Type</th>
                             <th>Status</th>

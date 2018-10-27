@@ -59,7 +59,7 @@
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    List of Featchers
+                                    List of Fetchers
                                 </h2>
                                 <ul class="header-dropdown m-r--5">
                                     <li class="dropdown">
@@ -78,7 +78,6 @@
                                             <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                                 <thead>
                                                     <tr>
-                                                        <th>#</th>
                                                         <th>Fetcher</th>
                                                         <th>Status</th>
                                                         <th>Rfid No</th>
@@ -88,7 +87,6 @@
                                                 </thead>
                                                 <tfoot>
                                                     <tr>
-                                                        <th>#</th>
                                                         <th>Fetcher</th>
                                                         <th>Status</th>
                                                         <th>Rfid No</th>
@@ -99,7 +97,6 @@
                                                 <tbody> 
                                                         @foreach($logtrails as $index => $logtrail)
                                                         <tr>
-                                                            <td>{{ $index + 1}}</td>
                                                             <td>{{ $logtrail->fetcher }}</td>
                                                             <td>{{ $logtrail->status }}</td>
                                                             <td>{{ $logtrail->rfids }}</td>
