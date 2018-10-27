@@ -141,7 +141,6 @@
              for (x=0; x < data.fetchers.length; x++){
                 var y = data.fetchers[x];
                 $('.studentList').append('<tr style="background-color:'+y.color+'!important">'+
-                            '<td>'+y.id+'</td>'+
                             '<td>'+y.todayfetcher+'</td>'+
                             '<td>'+y.type+'</td>'+
                             '<td>'+y.status+'</td>'+

@@ -40,7 +40,6 @@
                                 <table class="table table-bordered table-striped table-hover" id="example">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
                                             <th>Name</th>
                                             <th>Gender</th>
                                             <th>Birthday</th>
@@ -53,7 +52,6 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>ID</th>
                                             <th>Name</th>
                                             <th>Gender</th>
                                             <th>Birthday</th>
@@ -67,7 +65,6 @@
                                     <tbody> 
                                         @foreach($fetchers as $index => $fetcher)
                                         <tr>
-                                            <td>{{ $index + 1 }}</td>
                                             <td>{{ $fetcher->name }}</td>
                                             <td>{{ $fetcher->gender }}</td>
                                             <td>{{ $fetcher->birthday }}</td>

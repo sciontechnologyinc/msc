@@ -31,7 +31,7 @@
                  <label>Birthday</label>
                  <div class="iconic-input">
                      <i class="fa fa-calendar"></i>
-                     <input type="date" class="form-control" id="dateofbirth" name="birthday" placeholder="Birthday" value="2018-08-15" required="">
+                     <input type="date" class="form-control" id="dateofbirth" name="birthday" placeholder="Birthday" value="YYYY-MM-DD" required="">
                  </div>
              </div>
          
@@ -96,16 +96,6 @@ $(document).ready(function() {
             $('#spnPhoneStatus').css('color', 'red');
         }
     });
-
-$('#dateofbirth').datepicker({
-  maxDate: '-18Y',
-  dateFormat: 'dd/mm/yy',
-  changeMonth: true,
-  changeYear: true,
-  yearRange: '-100:+0'
-});
-   
-});
 
 
 
