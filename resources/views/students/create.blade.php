@@ -31,7 +31,7 @@
                  <label>Birthday</label>
                  <div class="iconic-input">
                      <i class="fa fa-calendar"></i>
-                     <input type="date" class="form-control studentdate" id="dateofbirth" name="birthday" placeholder="Birthday" value="2018-08-15" required="">
+                     <input type="date" class="form-control" id="dateofbirth" name="birthday" placeholder="Birthday" value="YYYY-MM-DD" required="">
                  </div>
              </div>
 
@@ -47,7 +47,7 @@
 
              <div class="form-group">
                      {!!Form::label('section', 'Section', array('class' => 'form-control-label'))!!}
-                          <select name="section" class="form-control">
+                          <select name="section" clas   s="form-control">
                                   <option value="" disabled {{ old('section') ? '' : 'selected' }}>Choose a Section</option>
                                   @foreach($sections as $section)
                                       <option value="{{$section->section}}" {{ old('section') ? 'selected' : '' }}>{{$section->section}} </option>
@@ -126,14 +126,6 @@ $(document).ready(function() {
         }
     });
 
-$('#dateofbirth').datepicker({
-  maxDate: '-18Y',
-  dateFormat: 'dd/mm/yy',
-  changeMonth: true,
-  changeYear: true,
-  yearRange: '-100:+0'
-});
-   
 });
 
 

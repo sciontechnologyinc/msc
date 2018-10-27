@@ -21,7 +21,8 @@
                  <label>Birthday</label>
                  <div class="iconic-input">
                      <i class="fa fa-calendar"></i>
-                     <input type="text" required="" id="dateofbirth" class="form-control">
+                     <input type="date" class="form-control" id="dateofbirth" name="birthday" placeholder="Birthday">
+                   
                  </div>
              </div>
              <div class="form-group">
@@ -76,14 +77,6 @@ $(document).ready(function() {
         }
     });
 
-$('#dateofbirth').datepicker({
-  maxDate: '-18Y',
-  dateFormat: 'dd/mm/yy',
-  changeMonth: true,
-  changeYear: true,
-  yearRange: '-100:+0'
-});
-   
 });
 
 
